@@ -22,7 +22,6 @@ func _ready() -> void:
     var sys_locale := TranslationServer.get_locale().substr(0, 2)
     if (Settings.read("launcher_locale") == "") and (sys_locale in TranslationServer.get_loaded_locales()):
         Settings.store("launcher_locale", sys_locale)
-    
     var locale = Settings.read("launcher_locale")
     TranslationServer.set_locale(locale)
     var lang_idx := _langs.find(locale)

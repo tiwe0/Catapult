@@ -216,6 +216,7 @@ text = "btn_delete"
 icon = ExtResource("40")
 
 [node name="ChangelogDialog" parent="Main/Tabs/Game" instance=ExtResource("32")]
+position = Vector2i(0, 36)
 
 [node name="Mods" type="VBoxContainer" parent="Main/Tabs"]
 visible = false
@@ -581,6 +582,7 @@ text = "Existing font configuration will be shown here.
 ..."
 
 [node name="FontSizeHelpDialog" parent="Main/Tabs/Fonts" instance=ExtResource("29")]
+position = Vector2i(0, 36)
 
 [node name="Backups" type="VBoxContainer" parent="Main/Tabs"]
 visible = false

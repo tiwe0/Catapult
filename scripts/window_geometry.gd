@@ -53,7 +53,7 @@ func recover_window_state() -> void:
     var state: Dictionary = Settings.read("window_state")
     
     if state.is_empty():
-        OS.call_deferred("center_window")
+        DisplayServer.call_deferred("window_set_current_screen")
         return
     
     base_size =  Vector2(state["size_x"] as float, state["size_y"] as float)
@@ -78,7 +78,7 @@ func _on_SceneTree_idle():
     ProjectSettings.call_deferred("set_setting", "display/window/per_pixel_transparency/allowed", false)
     OS.set_deferred("window_per_pixel_transparency_enabled", false)
     OS.set_deferred("window_borderless", false)
-    OS.call_deferred("set_icon", load("res://icons/appicon.svg"))
+    # DisplayServer.call_deferred("set_icon", load("res://icons/appicon.svg"))
     recover_window_state()
     _apply_scale()
 

@@ -23,6 +23,10 @@ const _ASSET_FILTERS = {
         "field": "name",
         "substring": "cdda-windows-tiles-x64",
     },
+    "dda-experimental-mac": {
+        "field": "name",
+        "substring": "cdda-mac-tiles-x64",
+    },
     "bn-experimental-linux": {
         "field": "name",
         "substring": "cbn-linux-tiles-x64",
@@ -30,6 +34,10 @@ const _ASSET_FILTERS = {
     "bn-experimental-win": {
         "field": "name",
         "substring": "cbn-windows-tiles-x64",
+    },
+    "bn-experimental-max": {
+        "field": "name",
+        "substring": "cbn-mac-tiles-x64",
     },
 }
 
@@ -134,6 +142,59 @@ const _DDA_STABLE_WIN = [
     },
 ]
 
+const _DDA_STABLE_MAC = [
+    {
+        "name": "0.G Gaiman",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.G/cdda-osx-tiles-x64-2023-03-01-0054.dmg",
+        "filename": "cdda-osx-tiles-x64-2023-03-01-0054.dmg"
+    },	
+    {
+        "name": "0.F-3 Frank-3",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.F-3/cataclysmdda-0.F-OSX-Tiles-0.F-3.dmg",
+        "filename": "cataclysmdda-0.F-OSX-Tiles-0.F-3.dmg"
+    },	
+    {
+        "name": "0.F-2 Frank-2",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.F-2/cataclysmdda-0.F-OSX-Tiles-0.F-2.dmg",
+        "filename": "cataclysmdda-0.F-OSX-Tiles-0.F-2.dmg"
+    },
+    {
+        "name": "0.F-1 Frank-1",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.F-1/cataclysmdda-0.F-OSX-Tiles-0.F-1.dmg",
+        "filename": "cataclysmdda-0.F-OSX-Tiles-0.F-1.dmg"
+    },
+    {
+        "name": "0.F Frank",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.F/cdda-osx-tiles-x64-2021-07-03-0512.dmg",
+        "filename": "cdda-osx-tiles-x64-2021-07-03-0512.dmg"
+    },
+    {
+        "name": "0.E-3 Ellison-3",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.E-3/cataclysmdda-0.E-OSX-Tiles-0.E-3.dmg",
+        "filename": "cataclysmdda-0.E-OSX-Tiles-0.E-3.dmg"
+    },
+    {
+        "name": "0.E-2 Ellison-2",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.E-2/cataclysmdda-0.E-OSX-Tiles-0.E-2.dmg",
+        "filename": "cataclysmdda-0.E-OSX-Tiles-0.E-2.dmg"
+    },
+    {
+        "name": "0.E-1 Ellison-1",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.E-1/cataclysmdda-0.E-OSX-Tiles-0.E-1.dmg",
+        "filename": "cataclysmdda-0.E-OSX-Tiles-0.E-1.dmg"
+    },
+    {
+        "name": "0.E Ellison",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.E/Cataclysm-0.E-OSX-Tiles-10478.dmg",
+        "filename": "Cataclysm-0.E-OSX-Tiles-10478.dmg"
+    },
+    {
+        "name": "0.D Danny",
+        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.D/Cataclysm-0.D-8574-OSX-Tiles.dmg",
+        "filename": "Cataclysm-0.D-8574-OSX-Tiles.dmg"
+    },
+]
+
 const _BN_STABLE_LINUX = [
     {
         "name": "0.3",
@@ -167,6 +228,29 @@ const _BN_STABLE_WIN = [
         "name": "0.1",
         "url": "https://github.com/cataclysmbnteam/Cataclysm-BN/releases/download/cbn-0.1/cbn-windows-tiles-x64-msvc-0.1.zip",
         "filename": "cbn-windows-tiles-x64-msvc-0.1.zip"
+    }
+]
+
+const _BN_STABLE_MAC = [
+    {
+        "name": "0.4",
+        "url": "https://github.com/cataclysmbnteam/Cataclysm-BN/releases/download/cbn-0.4/cbn-osx-curses-x64-0.4.dmg",
+        "filename": "cbn-osx-curses-x64-0.4.dmg"
+    },
+    {
+        "name": "0.3",
+        "url": "https://github.com/cataclysmbnteam/Cataclysm-BN/releases/download/cbn-0.3/cbn-osx-curses-x64-0.3.dmg",
+        "filename": "cbn-osx-curses-x64-0.3.dmg"
+    },
+    {
+        "name": "0.2",
+        "url": "https://github.com/cataclysmbnteam/Cataclysm-BN/releases/download/cbn-0.2/cbn-osx-curses-x64-0.2.dmg",
+        "filename": "cbn-osx-curses-x64-0.2.dmg"
+    },
+    {
+        "name": "0.1",
+        "url": "https://github.com/cataclysmbnteam/Cataclysm-BN/releases/download/cbn-0.1/cbn-osx-curses-x64-0.1.dmg",
+        "filename": "cbn-osx-curses-x64-0.1.dmg"
     }
 ]
 
@@ -276,6 +360,8 @@ func fetch(release_key: String) -> void:
                     releases["dda-stable"] = _DDA_STABLE_LINUX
                 "win":
                     releases["dda-stable"] = _DDA_STABLE_WIN
+                "mac":
+                    releases["dda-stable"] = _DDA_STABLE_MAC
             emit_signal("done_fetching_releases")
         "dda-experimental":
             Status.post(tr("msg_fetching_releases_dda"))
@@ -286,6 +372,8 @@ func fetch(release_key: String) -> void:
                     releases["bn-stable"] = _BN_STABLE_LINUX
                 "win":
                     releases["bn-stable"] = _BN_STABLE_WIN
+                "mac":
+                    releases["bn-stable"] = _BN_STABLE_MAC
             emit_signal("done_fetching_releases")
         "bn-experimental":
             Status.post(tr("msg_fetching_releases_bn"))
