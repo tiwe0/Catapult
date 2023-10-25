@@ -5,7 +5,7 @@ signal operation_started
 signal operation_finished
 
 
-func install_release(release_info: Dictionary, game: String, update_in: String = "") -> void:
+func install_release(release_info: Dictionary, _game: String, update_in: String = "") -> void:
 	
 	emit_signal("operation_started")
 	
@@ -15,21 +15,21 @@ func install_release(release_info: Dictionary, game: String, update_in: String =
 		Status.post(tr("msg_installing_game") % release_info["name"])
 	
 	Downloader.download_file(release_info["url"], Paths.own_dir, release_info["filename"])
-	yield(Downloader, "download_finished")
+	await Downloader.download_finished
 	
-	var archive: String = Paths.own_dir.plus_file(release_info["filename"])
-	if Directory.new().file_exists(archive):
+	var archive: String = Paths.own_dir + str(release_info["filename"])
+	if DirAccess.dir_exists_absolute(archive):
 		
 		FS.extract(archive, Paths.tmp_dir)
-		yield(FS, "extract_done")
-		Directory.new().remove(archive)
+		await FS.extract_done
+		DirAccess.remove_absolute(archive)
 		
 		if FS.last_extract_result == 0:
 		
 			var extracted_root
 			match OS.get_name():
 				"X11":
-					extracted_root = Paths.tmp_dir.plus_file(FS.list_dir(Paths.tmp_dir)[0])
+					extracted_root = Paths.tmp_dir + str(FS.list_dir(Paths.tmp_dir)[0])
 				"Windows":
 					extracted_root = Paths.tmp_dir
 			
@@ -39,12 +39,12 @@ func install_release(release_info: Dictionary, game: String, update_in: String =
 			if update_in:
 				target_dir = update_in
 				FS.rm_dir(target_dir)
-				yield(FS, "rm_dir_done")
+				await FS.rm_dir_done
 			else:
 				target_dir = Paths.next_install_dir
 			
 			FS.move_dir(extracted_root, target_dir)
-			yield(FS, "move_dir_done")
+			await FS.rm_dir_done
 			
 			if update_in:
 				Settings.store("active_install_" + Settings.read("game"), release_info["name"])
@@ -66,7 +66,7 @@ func remove_release_by_name(name: String) -> void:
 		Status.post(tr("msg_deleting_game") % name)
 		var location = installs[game][name]
 		FS.rm_dir(location)
-		yield(FS, "rm_dir_done")
+		await FS.rm_dir_done
 		Status.post(tr("msg_game_deleted"))
 	else:
 		Status.post(tr("msg_delete_not_found") % name, Enums.MSG_ERROR)

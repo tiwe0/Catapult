@@ -1,15 +1,15 @@
 extends VBoxContainer
 
 
-onready var _sound = $"/root/Catapult/Sound"
-onready var _installed_list = $HBox/Installed/InstalledList
-onready var _available_list = $HBox/Downloadable/AvailableList
-onready var _btn_delete = $HBox/Installed/BtnDelete
-onready var _btn_install = $HBox/Downloadable/BtnInstall
-onready var _dlg_confirm_del = $ConfirmDelete
-onready var _dlg_manual_dl = $ConfirmManualDownload
-onready var _dlg_file = $InstallFromFileDialog
-onready var _cbox_stock = $HBox/Installed/ShowStock
+@onready var _sound = $"/root/Catapult/Sound"
+@onready var _installed_list = $HBox/Installed/InstalledList
+@onready var _available_list = $HBox/Downloadable/AvailableList
+@onready var _btn_delete = $HBox/Installed/BtnDelete
+@onready var _btn_install = $HBox/Downloadable/BtnInstall
+@onready var _dlg_confirm_del = $ConfirmDelete
+@onready var _dlg_manual_dl = $ConfirmManualDownload
+@onready var _dlg_file = $InstallFromFileDialog
+@onready var _cbox_stock = $HBox/Installed/ShowStock
 
 var _installed_packs = []
 
@@ -106,7 +106,7 @@ func _on_BtnDelete_pressed() -> void:
 func _on_ConfirmDelete_confirmed() -> void:
 	
 	_sound.delete_pack(_installed_packs[_installed_list.get_selected_items()[0]]["name"])
-	yield(_sound, "soundpack_deletion_finished")
+	await _sound.soundpack_deletion_finished
 	refresh_installed()
 	
 	if len(_installed_list.get_selected_items()) == 0:
@@ -140,7 +140,7 @@ func _on_BtnInstall_pressed() -> void:
 			_sound.install_pack(pack_index, null, true)
 		else:
 			_sound.install_pack(pack_index)
-		yield(_sound, "soundpack_installation_finished")
+		await _sound.soundpack_installation_finished
 		refresh_installed()
 
 
@@ -164,5 +164,5 @@ func _on_InstallFromFileDialog_file_selected(path: String) -> void:
 	else:
 		_sound.install_pack(index, path, false, true)
 	
-	yield(_sound, "soundpack_installation_finished")
+	await _sound.soundpack_installation_finished
 	refresh_installed()
