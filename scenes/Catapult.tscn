@@ -155,19 +155,9 @@ text = "lbl_build_none"
 
 [node name="GameDir" parent="Main/Tabs/Game/ActiveInstall/Build" instance=ExtResource("26")]
 layout_mode = 2
-margin_left = 103.0
-margin_top = 3.0
-margin_right = 121.0
-margin_bottom = 21.0
-hint_tooltip = "tooltip_game_dir"
 
 [node name="UserDir" parent="Main/Tabs/Game/ActiveInstall/Build" instance=ExtResource("26")]
 layout_mode = 2
-margin_left = 125.0
-margin_top = 3.0
-margin_right = 143.0
-margin_bottom = 21.0
-hint_tooltip = "tooltip_user_dir"
 
 [node name="Launch" type="HBoxContainer" parent="Main/Tabs/Game/ActiveInstall"]
 layout_mode = 2
@@ -524,12 +514,6 @@ text = "lbl_other_settings"
 
 [node name="HelpIcon" parent="Main/Tabs/Fonts/FontSelection/LeftPane/OtherSettings" instance=ExtResource("26")]
 layout_mode = 2
-margin_left = 124.0
-margin_top = 2.0
-margin_right = 144.0
-margin_bottom = 22.0
-rect_min_size = Vector2(20, 20)
-hint_tooltip = "View detailed description of these settings."
 
 [node name="FontSizeUI" type="HBoxContainer" parent="Main/Tabs/Fonts/FontSelection/LeftPane"]
 layout_mode = 2
@@ -597,15 +581,6 @@ text = "Existing font configuration will be shown here.
 ..."
 
 [node name="FontSizeHelpDialog" parent="Main/Tabs/Fonts" instance=ExtResource("29")]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-anchor_right = 0.0
-anchor_bottom = 0.0
 
 [node name="Backups" type="VBoxContainer" parent="Main/Tabs"]
 visible = false

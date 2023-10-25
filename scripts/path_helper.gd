@@ -47,7 +47,7 @@ func _get_installs_summary() -> Dictionary:
             if DirAccess.dir_exists_absolute(info_file):
                 var info = Helpers.load_json_file(info_file)
                 installs[info["name"]] = base_dir + str(subdir)
-        if not installs.empty():
+        if not installs.is_empty():
             result[game] = installs
     
     # Ensure that some installation of the game is set as active

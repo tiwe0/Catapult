@@ -204,8 +204,8 @@ func _on_Tabs_tab_changed(tab: int) -> void:
     if tab != 1:
         return
     
-    _cbox_show_stock.pressed = Settings.read("show_stock_mods")
-    _cbox_show_installed.pressed = Settings.read("show_installed_mods_in_available")
+    _cbox_show_stock.button_pressed = Settings.read("show_stock_mods")
+    _cbox_show_installed.button_pressed = Settings.read("show_installed_mods_in_available")
     _lbl_mod_info.bbcode_text = tr("lbl_mod_info")
     _btn_delete.disabled = true
     _btn_add.disabled = true

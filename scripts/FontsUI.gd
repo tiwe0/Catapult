@@ -115,7 +115,7 @@ func _load_font_options() -> void:
     _sb_font_ui.value = _fonts.get_game_option("FONT_SIZE") as int
     _sb_font_map.value = _fonts.get_game_option("MAP_FONT_SIZE") as int
     _sb_font_om.value = _fonts.get_game_option("OVERMAP_FONT_SIZE") as int
-    _cbtn_blending.pressed = (_fonts.get_game_option("FONT_BLENDING").to_lower() == "true")
+    _cbtn_blending.button_pressed = (_fonts.get_game_option("FONT_BLENDING").to_lower() == "true")
 
 
 func _on_Tabs_tab_changed(tab: int) -> void:
@@ -144,7 +144,7 @@ func _on_Tabs_tab_changed(tab: int) -> void:
         _list.add_item(font["name"])
         _list.set_item_tooltip(_list.get_item_count() - 1, tr(font["desc_key"]))
     
-    _cbox_cyrillic.pressed = Settings.read("font_preview_cyrillic")
+    _cbox_cyrillic.button_pressed = Settings.read("font_preview_cyrillic")
     _load_font_options()
     
     _preview.bbcode_text = ""

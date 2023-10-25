@@ -67,7 +67,7 @@ func _on_Tabs_tab_changed(tab: int) -> void:
 	if tab != 2:
 		return
 		
-	_cbox_stock.pressed = Settings.read("show_stock_sound")
+	_cbox_stock.button_pressed = Settings.read("show_stock_sound")
 	
 	_btn_delete.disabled = true
 	_btn_install.disabled = true

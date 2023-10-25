@@ -27,6 +27,8 @@ func list_dir(path: String, recursive := false) -> Array:
     # Lists the files and subdirectories within a DirAccess.
     
     var d = DirAccess.open(path)
+    if not d:
+        return []
     
     var error = d.list_dir_begin()
     if error:

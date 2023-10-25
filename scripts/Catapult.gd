@@ -109,14 +109,13 @@ func load_ui_theme(theme_file: String) -> void:
     # the new theme.
     
     # self.theme.applyf_scale(1.0)
-    var new_theme_name = "res://themes/" + str(theme_file)
     var new_theme := load("res://themes/" + str(theme_file)) as ScalableTheme
     
     if new_theme:
         new_theme.apply_scale(Geom.scale)
-        self.theme = new_theme
+        set_theme(new_theme)
     else:
-        new_theme := Theme.new() as ScalableTheme
+        new_theme = Theme.new() as ScalableTheme
         new_theme.apply_scale(Geom.scale)
         set_theme(new_theme)
         Status.post(tr("msg_theme_load_error") % theme_file, Enums.MSG_ERROR)
@@ -332,7 +331,7 @@ func _setup_ui() -> void:
     if not Settings.read("debug_mode"):
         _tabs.remove_child(_debug_ui)
     
-    _cb_update.pressed = Settings.read("update_current_when_installing")
+    _cb_update.button_pressed = Settings.read("update_current_when_installing")
     
     apply_game_choice()
     
@@ -362,7 +361,7 @@ func apply_game_choice() -> void:
     _rbtn_exper.disabled = false
     _rbtn_stable.disabled = false
     if channel == "stable":
-        _rbtn_stable.pressed = true
+        _rbtn_stable.button_pressed = true
         _btn_refresh.disabled = true
     else:
         _btn_refresh.disabled = false
@@ -420,31 +419,31 @@ func _start_game(world := "") -> void:
 
 func _on_InstallsList_item_selected(index: int) -> void:
     
-    var name = _lst_installs.get_item_text(index)
+    var _name = _lst_installs.get_item_text(index)
     _btn_delete.disabled = false
-    _btn_make_active.disabled = (name == Settings.read("active_install_" + Settings.read("game")))
+    _btn_make_active.disabled = (_name == Settings.read("active_install_" + Settings.read("game")))
 
 
 func _on_InstallsList_item_activated(index: int) -> void:
     
-    var name = _lst_installs.get_item_text(index)
-    var path = _installs[Settings.read("game")][name]
+    var _name = _lst_installs.get_item_text(index)
+    var path = _installs[Settings.read("game")][_name]
     if DirAccess.dir_exists_absolute(path):
         OS.shell_open(path)
 
 
 func _on_btnMakeActive_pressed() -> void:
     
-    var name = _lst_installs.get_item_text(_lst_installs.get_selected_items()[0])
-    Status.post(tr("msg_set_active") % name)
-    Settings.store("active_install_" + Settings.read("game"), name)
+    var _name = _lst_installs.get_item_text(_lst_installs.get_selected_items()[0])
+    Status.post(tr("msg_set_active") % _name)
+    Settings.store("active_install_" + Settings.read("game"), _name)
     _refresh_currently_installed()
 
 
 func _on_btnDelete_pressed() -> void:
     
-    var name = _lst_installs.get_item_text(_lst_installs.get_selected_items()[0])
-    _installer.remove_release_by_name(name)
+    var _name = _lst_installs.get_item_text(_lst_installs.get_selected_items()[0])
+    _installer.remove_release_by_name(_name)
 
 
 func _refresh_currently_installed() -> void:
@@ -456,11 +455,11 @@ func _refresh_currently_installed() -> void:
     _installs = Paths.installs_summary
     var active_name = Settings.read("active_install_" + game)
     if game in _installs:
-        for name in _installs[game]:
-            _lst_installs.add_item(name)
+        for _name in _installs[game]:
+            _lst_installs.add_item(_name)
             var curr_idx = _lst_installs.get_item_count() - 1
             _lst_installs.set_item_tooltip(curr_idx, tr("tooltip_installs_item") % _installs[game][name])
-#			if name == active_name:
+#			if _name == active_name:
 #				_lst_installs.set_item_custom_fg_color(curr_idx, Color(0, 0.8, 0))
     
     _lst_builds.select(-1)

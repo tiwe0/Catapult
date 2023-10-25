@@ -187,7 +187,7 @@ func _ready() -> void:
         "Windows":
             _platform = "win"
         "macOS":
-            _platform = "macOS"
+            _platform = "mac"
         _:
             Status.post(tr("msg_unsupported_platform") % p, Enums.MSG_ERROR)
 
@@ -237,8 +237,7 @@ func _on_request_completed_bn(result: int, response_code: int,
 
 
 func _parse_builds(data: PackedByteArray, write_to: Array, filter: Dictionary) -> void:
-    var j = JSON.new()
-    var json = j.parse_string(data.get_string_from_utf8()).result
+    var json = JSON.parse_string(data.get_string_from_utf8())
     
     # Check if API rate limit is exceeded
     if "message" in json:

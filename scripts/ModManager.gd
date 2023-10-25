@@ -69,7 +69,7 @@ func parse_mods_dir(mods_dir: String) -> Dictionary:
         if FileAccess.file_exists(modinfo):
             
             var f = FileAccess.open(modinfo, FileAccess.READ)
-            var json = JSON.new().parse_string(f.get_as_text())
+            var json = JSON.parse_string(f.get_as_text())
             if json.error != OK:
                 Status.post(tr("msg_mod_json_parsing_failed") % modinfo, Enums.MSG_ERROR)
                 continue
