@@ -1,4 +1,4 @@
-extends Window
+extends AcceptDialog
 
 
 const _PR_URL = {
@@ -11,6 +11,8 @@ const _PR_URL = {
 
 var _pr_data = ""
 
+func _ready():
+    ok_button_text = tr("btn_close")
 
 func open() -> void:
     
@@ -27,9 +29,9 @@ func download_pull_requests():
     _pr_data = tr("str_fetching_changes")
     _pullRequests.request(url, headers)
     _changelogTextBox.clear()
-    _changelogTextBox.append_bbcode(_pr_data)
+    _changelogTextBox.append_text(_pr_data)
     _changelogTextBox.clear()
-    _changelogTextBox.append_bbcode(_pr_data)
+    _changelogTextBox.append_text(_pr_data)
 
 
 func _on_PullRequests_request_completed(result, response_code, headers, body):
@@ -170,4 +172,8 @@ class PullRequest:
 
 
 func _on_BtnCloseChangelog_pressed() -> void:
+    hide()
+
+func _on_BtnOK_pressed() -> void:
+    
     hide()

@@ -2,13 +2,18 @@
 
 [ext_resource type="Script" path="res://scripts/ChangelogDialod.gd" id="1"]
 
-[node name="ChangelogDialog" type="Window"]
+[node name="ChangelogDialog" type="AcceptDialog"]
+visible = true
 script = ExtResource("1")
 
 [node name="Panel" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 92.0
+offset_bottom = 51.0
 
 [node name="Margin" type="MarginContainer" parent="Panel"]
 layout_mode = 2
@@ -23,10 +28,7 @@ size_flags_vertical = 3
 bbcode_enabled = true
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-[node name="BtnCloseChangelog" type="Button" parent="Panel/Margin/VBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "btn_close"
-
 [node name="PullRequests" type="HTTPRequest" parent="."]
 timeout = 20.0
+
+[connection signal="confirmed" from="." to="." method="_on_BtnOK_pressed"]

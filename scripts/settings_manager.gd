@@ -19,7 +19,7 @@ const _HARDCODED_DEFAULTS = {
     "num_releases_to_request": 10,
     "num_prs_to_request": 50,
     "ui_scale_override": 1.0,
-    "ui_scale_override_enabled": false,
+    "ui_scale_override_enabled": true,
     "show_stock_mods": false,
     "show_installed_mods_in_available": false,
     "show_obsolete_mods": false,

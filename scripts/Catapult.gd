@@ -57,6 +57,9 @@ func _ready() -> void:
     if Settings.read("print_tips_of_the_day"):
         welcome_msg += tr("str_tip_of_the_day") + TOTD.get_tip() + "\n"
     Status.post(welcome_msg)
+
+    _lst_games.add_item("dda")
+    _lst_games.add_item("bn")
     
     _unpack_utils()
     _setup_ui()
@@ -347,7 +350,7 @@ func reload_builds_list() -> void:
     
     _lst_builds.clear()
     for rec in _releases.releases[_get_release_key()]:
-            _lst_builds.add_item(rec["name"])
+        _lst_builds.add_item(rec["name"])
     _refresh_currently_installed()
 
 
@@ -462,7 +465,7 @@ func _refresh_currently_installed() -> void:
 #			if _name == active_name:
 #				_lst_installs.set_item_custom_fg_color(curr_idx, Color(0, 0.8, 0))
     
-    _lst_builds.select(-1)
+    _lst_builds.select(0)
     _btn_make_active.disabled = true
     _btn_delete.disabled = true
     

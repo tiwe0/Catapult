@@ -31,6 +31,8 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("11")
 script = ExtResource("4")
 
@@ -51,6 +53,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="GameInfo" type="HBoxContainer" parent="Main"]
+custom_minimum_size = Vector2(2.08165e-12, 100)
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="Main/GameInfo"]
@@ -66,7 +69,6 @@ stretch_mode = 6
 [node name="Description" type="RichTextLabel" parent="Main/GameInfo"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 bbcode_enabled = true
 text = "Game Title is a game in which... This is a placeholder text to gauge how much space will be taken for the game description that will be loaded into this label at runtime. The descriptions are around 4 lines each at this width, so the placeholder text mush have a similar length to perform its function. This length is about right."
 
@@ -75,6 +77,7 @@ layout_mode = 2
 
 [node name="Tabs" type="TabContainer" parent="Main" groups=["disable_during_backup_operations", "disable_during_mod_operations", "disable_during_release_operations", "disable_during_soundpack_operations", "disable_while_fetching_releases"]]
 layout_mode = 2
+size_flags_vertical = 3
 script = ExtResource("16")
 
 [node name="Game" type="VBoxContainer" parent="Main/Tabs"]
@@ -217,6 +220,7 @@ icon = ExtResource("40")
 
 [node name="ChangelogDialog" parent="Main/Tabs/Game" instance=ExtResource("32")]
 position = Vector2i(0, 36)
+visible = false
 
 [node name="Mods" type="VBoxContainer" parent="Main/Tabs"]
 visible = false
@@ -583,6 +587,7 @@ text = "Existing font configuration will be shown here.
 
 [node name="FontSizeHelpDialog" parent="Main/Tabs/Fonts" instance=ExtResource("29")]
 position = Vector2i(0, 36)
+visible = false
 
 [node name="Backups" type="VBoxContainer" parent="Main/Tabs"]
 visible = false
@@ -669,123 +674,6 @@ text = "btn_create_backup"
 [node name="Spacer" type="Control" parent="Main/Tabs/Backups/Current"]
 layout_mode = 2
 
-[node name="Settings" type="VBoxContainer" parent="Main/Tabs"]
-visible = false
-layout_mode = 2
-script = ExtResource("8")
-
-[node name="LauncherLanguage" type="HBoxContainer" parent="Main/Tabs/Settings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Main/Tabs/Settings/LauncherLanguage"]
-layout_mode = 2
-text = "lbl_launcher_language"
-
-[node name="obtnLanguage" type="OptionButton" parent="Main/Tabs/Settings/LauncherLanguage"]
-layout_mode = 2
-size_flags_horizontal = 10
-expand_icon = true
-
-[node name="LauncherTheme" type="HBoxContainer" parent="Main/Tabs/Settings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Main/Tabs/Settings/LauncherTheme"]
-layout_mode = 2
-text = "lbl_launcher_theme"
-
-[node name="obtnTheme" type="OptionButton" parent="Main/Tabs/Settings/LauncherTheme"]
-layout_mode = 2
-size_flags_horizontal = 10
-expand_icon = true
-
-[node name="ShowGameDesc" type="CheckButton" parent="Main/Tabs/Settings"]
-layout_mode = 2
-text = "cbtn_show_game_desc"
-
-[node name="KeepLauncherOpen" type="CheckButton" parent="Main/Tabs/Settings"]
-layout_mode = 2
-text = "cbtn_keep_launcher_open"
-
-[node name="PrintTips" type="CheckButton" parent="Main/Tabs/Settings"]
-layout_mode = 2
-text = "cbtn_print_tips"
-
-[node name="UpdateToSame" type="CheckButton" parent="Main/Tabs/Settings"]
-layout_mode = 2
-text = "cbtn_updating_to_same_build"
-
-[node name="ShortenNames" type="CheckButton" parent="Main/Tabs/Settings"]
-layout_mode = 2
-text = "cbtn_shorten_release_names"
-
-[node name="AlwaysShowInstalls" type="CheckButton" parent="Main/Tabs/Settings"]
-layout_mode = 2
-text = "cbtn_always_show_installs"
-
-[node name="ShowObsoleteMods" type="CheckButton" parent="Main/Tabs/Settings"]
-layout_mode = 2
-text = "cbtn_show_obsolete_mods"
-
-[node name="InstallArchivedMods" type="CheckButton" parent="Main/Tabs/Settings"]
-layout_mode = 2
-text = "cbtn_install_archived_mods"
-
-[node name="ShowDebug" type="CheckButton" parent="Main/Tabs/Settings"]
-layout_mode = 2
-text = "cbtn_debug_mode"
-
-[node name="NumReleases" type="HBoxContainer" parent="Main/Tabs/Settings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Main/Tabs/Settings/NumReleases"]
-layout_mode = 2
-text = "lbl_num_releases_to_request"
-
-[node name="sbNumReleases" type="SpinBox" parent="Main/Tabs/Settings/NumReleases"]
-layout_mode = 2
-size_flags_horizontal = 10
-min_value = 1.0
-value = 30.0
-rounded = true
-
-[node name="NumPrs" type="HBoxContainer" parent="Main/Tabs/Settings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Main/Tabs/Settings/NumPrs"]
-layout_mode = 2
-text = "lbl_num_prs_to_request"
-
-[node name="sbNumPRs" type="SpinBox" parent="Main/Tabs/Settings/NumPrs"]
-layout_mode = 2
-size_flags_horizontal = 10
-min_value = 10.0
-step = 10.0
-value = 100.0
-rounded = true
-
-[node name="ScaleOverride" type="HBoxContainer" parent="Main/Tabs/Settings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Main/Tabs/Settings/ScaleOverride"]
-layout_mode = 2
-text = "lbl_ui_scale_override"
-
-[node name="cbScaleOverrideEnable" type="CheckBox" parent="Main/Tabs/Settings/ScaleOverride"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_stretch_ratio = 20.0
-text = "cbtn_enable_scale"
-
-[node name="sbScaleOverride" type="SpinBox" parent="Main/Tabs/Settings/ScaleOverride"]
-layout_mode = 2
-size_flags_horizontal = 10
-min_value = 75.0
-max_value = 300.0
-step = 12.5
-value = 100.0
-editable = false
-suffix = "%"
-
 [node name="Debug" type="VBoxContainer" parent="Main/Tabs"]
 visible = false
 layout_mode = 2
@@ -839,6 +727,130 @@ text = "Test translation retrieval"
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Print screen info"
+
+[node name="Settings" type="ScrollContainer" parent="Main/Tabs"]
+visible = false
+custom_minimum_size = Vector2(446, 600)
+layout_mode = 2
+script = ExtResource("8")
+
+[node name="SettingsVbox" type="VBoxContainer" parent="Main/Tabs/Settings"]
+custom_minimum_size = Vector2(446, 571)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LauncherLanguage" type="HBoxContainer" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Tabs/Settings/SettingsVbox/LauncherLanguage"]
+layout_mode = 2
+text = "lbl_launcher_language"
+
+[node name="obtnLanguage" type="OptionButton" parent="Main/Tabs/Settings/SettingsVbox/LauncherLanguage"]
+layout_mode = 2
+size_flags_horizontal = 10
+expand_icon = true
+
+[node name="LauncherTheme" type="HBoxContainer" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Tabs/Settings/SettingsVbox/LauncherTheme"]
+layout_mode = 2
+text = "lbl_launcher_theme"
+
+[node name="obtnTheme" type="OptionButton" parent="Main/Tabs/Settings/SettingsVbox/LauncherTheme"]
+layout_mode = 2
+size_flags_horizontal = 10
+expand_icon = true
+
+[node name="ShowGameDesc" type="CheckButton" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+text = "cbtn_show_game_desc"
+
+[node name="KeepLauncherOpen" type="CheckButton" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+text = "cbtn_keep_launcher_open"
+
+[node name="PrintTips" type="CheckButton" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+text = "cbtn_print_tips"
+
+[node name="UpdateToSame" type="CheckButton" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+text = "cbtn_updating_to_same_build"
+
+[node name="ShortenNames" type="CheckButton" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+text = "cbtn_shorten_release_names"
+
+[node name="AlwaysShowInstalls" type="CheckButton" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+text = "cbtn_always_show_installs"
+
+[node name="ShowObsoleteMods" type="CheckButton" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+text = "cbtn_show_obsolete_mods"
+
+[node name="InstallArchivedMods" type="CheckButton" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+text = "cbtn_install_archived_mods"
+
+[node name="ShowDebug" type="CheckButton" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+text = "cbtn_debug_mode"
+
+[node name="NumReleases" type="HBoxContainer" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Tabs/Settings/SettingsVbox/NumReleases"]
+layout_mode = 2
+text = "lbl_num_releases_to_request"
+
+[node name="sbNumReleases" type="SpinBox" parent="Main/Tabs/Settings/SettingsVbox/NumReleases"]
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 1.0
+value = 30.0
+rounded = true
+
+[node name="NumPrs" type="HBoxContainer" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Tabs/Settings/SettingsVbox/NumPrs"]
+layout_mode = 2
+text = "lbl_num_prs_to_request"
+
+[node name="sbNumPRs" type="SpinBox" parent="Main/Tabs/Settings/SettingsVbox/NumPrs"]
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 10.0
+step = 10.0
+value = 100.0
+rounded = true
+
+[node name="ScaleOverride" type="HBoxContainer" parent="Main/Tabs/Settings/SettingsVbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Tabs/Settings/SettingsVbox/ScaleOverride"]
+layout_mode = 2
+text = "lbl_ui_scale_override"
+
+[node name="cbScaleOverrideEnable" type="CheckBox" parent="Main/Tabs/Settings/SettingsVbox/ScaleOverride"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 20.0
+text = "cbtn_enable_scale"
+
+[node name="sbScaleOverride" type="SpinBox" parent="Main/Tabs/Settings/SettingsVbox/ScaleOverride"]
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 75.0
+max_value = 300.0
+step = 12.5
+value = 100.0
+editable = false
+suffix = "%"
 
 [node name="Log" type="RichTextLabel" parent="Main"]
 layout_mode = 2
@@ -925,21 +937,6 @@ script = ExtResource("34")
 [connection signal="pressed" from="Main/Tabs/Backups/Available/Buttons/BtnRefresh" to="Main/Tabs/Backups" method="_on_BtnRefresh_pressed"]
 [connection signal="text_changed" from="Main/Tabs/Backups/Current/HBox/EditName" to="Main/Tabs/Backups" method="_on_EditName_text_changed"]
 [connection signal="pressed" from="Main/Tabs/Backups/Current/HBox/BtnCreate" to="Main/Tabs/Backups" method="_on_BtnCreate_pressed"]
-[connection signal="item_selected" from="Main/Tabs/Settings/LauncherLanguage/obtnLanguage" to="Main/Tabs/Settings" method="_on_obtnLanguage_item_selected"]
-[connection signal="item_selected" from="Main/Tabs/Settings/LauncherTheme/obtnTheme" to="Main/Tabs/Settings" method="_on_obtnTheme_item_selected"]
-[connection signal="toggled" from="Main/Tabs/Settings/ShowGameDesc" to="Main/Tabs/Settings" method="_on_ShowGameDesc_toggled"]
-[connection signal="toggled" from="Main/Tabs/Settings/KeepLauncherOpen" to="Main/Tabs/Settings" method="_on_KeepLauncherOpen_toggled"]
-[connection signal="toggled" from="Main/Tabs/Settings/PrintTips" to="Main/Tabs/Settings" method="_on_PrintTips_toggled"]
-[connection signal="toggled" from="Main/Tabs/Settings/UpdateToSame" to="Main/Tabs/Settings" method="_on_UpdateToSame_toggled"]
-[connection signal="toggled" from="Main/Tabs/Settings/ShortenNames" to="Main/Tabs/Settings" method="_on_ShortenNames_toggled"]
-[connection signal="toggled" from="Main/Tabs/Settings/AlwaysShowInstalls" to="Main/Tabs/Settings" method="_on_AlwaysShowInstalls_toggled"]
-[connection signal="toggled" from="Main/Tabs/Settings/ShowObsoleteMods" to="Main/Tabs/Settings" method="_on_ShowObsoleteMods_toggled"]
-[connection signal="toggled" from="Main/Tabs/Settings/InstallArchivedMods" to="Main/Tabs/Settings" method="_on_InstallArchivedMods_toggled"]
-[connection signal="toggled" from="Main/Tabs/Settings/ShowDebug" to="Main/Tabs/Settings" method="_on_ShowDebug_toggled"]
-[connection signal="value_changed" from="Main/Tabs/Settings/NumReleases/sbNumReleases" to="Main/Tabs/Settings" method="_on_sbNumReleases_value_changed"]
-[connection signal="value_changed" from="Main/Tabs/Settings/NumPrs/sbNumPRs" to="Main/Tabs/Settings" method="_on_sbNumPRs_value_changed"]
-[connection signal="toggled" from="Main/Tabs/Settings/ScaleOverride/cbScaleOverrideEnable" to="Main/Tabs/Settings" method="_on_cbScaleOverrideEnable_toggled"]
-[connection signal="value_changed" from="Main/Tabs/Settings/ScaleOverride/sbScaleOverride" to="Main/Tabs/Settings" method="_on_sbScaleOverride_value_changed"]
 [connection signal="pressed" from="Main/Tabs/Debug/Button" to="Main/Tabs/Debug" method="_on_Button_pressed"]
 [connection signal="pressed" from="Main/Tabs/Debug/Button2" to="Main/Tabs/Debug" method="_on_Button2_pressed"]
 [connection signal="pressed" from="Main/Tabs/Debug/Button3" to="Main/Tabs/Debug" method="_on_Button3_pressed"]
@@ -949,6 +946,21 @@ script = ExtResource("34")
 [connection signal="pressed" from="Main/Tabs/Debug/Button7" to="Main/Tabs/Debug" method="_on_Button7_pressed"]
 [connection signal="pressed" from="Main/Tabs/Debug/Button8" to="Main/Tabs/Debug" method="_on_Button8_pressed"]
 [connection signal="pressed" from="Main/Tabs/Debug/Button9" to="Main/Tabs/Debug" method="_on_Button9_pressed"]
+[connection signal="item_selected" from="Main/Tabs/Settings/SettingsVbox/LauncherLanguage/obtnLanguage" to="Main/Tabs/Settings" method="_on_obtnLanguage_item_selected"]
+[connection signal="item_selected" from="Main/Tabs/Settings/SettingsVbox/LauncherTheme/obtnTheme" to="Main/Tabs/Settings" method="_on_obtnTheme_item_selected"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/ShowGameDesc" to="Main/Tabs/Settings" method="_on_ShowGameDesc_toggled"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/KeepLauncherOpen" to="Main/Tabs/Settings" method="_on_KeepLauncherOpen_toggled"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/PrintTips" to="Main/Tabs/Settings" method="_on_PrintTips_toggled"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/UpdateToSame" to="Main/Tabs/Settings" method="_on_UpdateToSame_toggled"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/ShortenNames" to="Main/Tabs/Settings" method="_on_ShortenNames_toggled"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/AlwaysShowInstalls" to="Main/Tabs/Settings" method="_on_AlwaysShowInstalls_toggled"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/ShowObsoleteMods" to="Main/Tabs/Settings" method="_on_ShowObsoleteMods_toggled"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/InstallArchivedMods" to="Main/Tabs/Settings" method="_on_InstallArchivedMods_toggled"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/ShowDebug" to="Main/Tabs/Settings" method="_on_ShowDebug_toggled"]
+[connection signal="value_changed" from="Main/Tabs/Settings/SettingsVbox/NumReleases/sbNumReleases" to="Main/Tabs/Settings" method="_on_sbNumReleases_value_changed"]
+[connection signal="value_changed" from="Main/Tabs/Settings/SettingsVbox/NumPrs/sbNumPRs" to="Main/Tabs/Settings" method="_on_sbNumPRs_value_changed"]
+[connection signal="toggled" from="Main/Tabs/Settings/SettingsVbox/ScaleOverride/cbScaleOverrideEnable" to="Main/Tabs/Settings" method="_on_cbScaleOverrideEnable_toggled"]
+[connection signal="value_changed" from="Main/Tabs/Settings/SettingsVbox/ScaleOverride/sbScaleOverride" to="Main/Tabs/Settings" method="_on_sbScaleOverride_value_changed"]
 [connection signal="meta_clicked" from="Main/Log" to="." method="_on_Log_meta_clicked"]
 [connection signal="request_completed" from="Releases/HTTPRequest_DDA" to="Releases" method="_on_request_completed_dda"]
 [connection signal="request_completed" from="Releases/HTTPRequest_BN" to="Releases" method="_on_request_completed_bn"]

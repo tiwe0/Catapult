@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends ScrollContainer
 
 
 var _langs := ["en", "fr", "ru", "zh", "cs", "es", "pl", "tr"]
@@ -24,29 +24,36 @@ func _ready() -> void:
         Settings.store("launcher_locale", sys_locale)
     var locale = Settings.read("launcher_locale")
     TranslationServer.set_locale(locale)
+
+    for lang in _langs:
+        $SettingsVbox/LauncherLanguage/obtnLanguage.add_item(lang)
+
     var lang_idx := _langs.find(locale)
     if lang_idx >= 0:
-        $LauncherLanguage/obtnLanguage.selected = lang_idx
+        $SettingsVbox/LauncherLanguage/obtnLanguage.selected = lang_idx
+
+    for _theme in _themes:
+        $SettingsVbox/LauncherTheme/obtnTheme.add_item(_theme)
     
     var theme_idx := _themes.find(Settings.read("launcher_theme"))
     if theme_idx >= 0:
-        $LauncherTheme/obtnTheme.selected = theme_idx
+        $SettingsVbox/LauncherTheme/obtnTheme.selected = theme_idx
     
-    $ShowGameDesc.button_pressed = Settings.read("show_game_desc")
-    $KeepLauncherOpen.button_pressed = Settings.read("keep_open_after_starting_game")
-    $PrintTips.button_pressed = Settings.read("print_tips_of_the_day")
-    $UpdateToSame.button_pressed = Settings.read("update_to_same_build_allowed")
-    $ShortenNames.button_pressed = Settings.read("shorten_release_names")
-    $AlwaysShowInstalls.button_pressed = Settings.read("always_show_installs")
-    $ShowObsoleteMods.button_pressed = Settings.read("show_obsolete_mods")
-    $InstallArchivedMods.button_pressed = Settings.read("install_archived_mods")
-    $ShowDebug.button_pressed = Settings.read("debug_mode")
-    $NumReleases/sbNumReleases.value = Settings.read("num_releases_to_request") as int
-    $NumPrs/sbNumPRs.value = Settings.read("num_prs_to_request") as int
+    $SettingsVbox/ShowGameDesc.button_pressed = Settings.read("show_game_desc")
+    $SettingsVbox/KeepLauncherOpen.button_pressed = Settings.read("keep_open_after_starting_game")
+    $SettingsVbox/PrintTips.button_pressed = Settings.read("print_tips_of_the_day")
+    $SettingsVbox/UpdateToSame.button_pressed = Settings.read("update_to_same_build_allowed")
+    $SettingsVbox/ShortenNames.button_pressed = Settings.read("shorten_release_names")
+    $SettingsVbox/AlwaysShowInstalls.button_pressed = Settings.read("always_show_installs")
+    $SettingsVbox/ShowObsoleteMods.button_pressed = Settings.read("show_obsolete_mods")
+    $SettingsVbox/InstallArchivedMods.button_pressed = Settings.read("install_archived_mods")
+    $SettingsVbox/ShowDebug.button_pressed = Settings.read("debug_mode")
+    $SettingsVbox/NumReleases/sbNumReleases.value = Settings.read("num_releases_to_request") as int
+    $SettingsVbox/NumPrs/sbNumPRs.value = Settings.read("num_prs_to_request") as int
     
-    $ScaleOverride/cbScaleOverrideEnable.button_pressed = Settings.read("ui_scale_override_enabled")
-    $ScaleOverride/sbScaleOverride.editable = Settings.read("ui_scale_override_enabled")
-    $ScaleOverride/sbScaleOverride.value = (Settings.read("ui_scale_override") as float) * 100.0
+    $SettingsVbox/ScaleOverride/cbScaleOverrideEnable.button_pressed = Settings.read("ui_scale_override_enabled")
+    $SettingsVbox/ScaleOverride/sbScaleOverride.editable = Settings.read("ui_scale_override_enabled")
+    $SettingsVbox/ScaleOverride/sbScaleOverride.value = (Settings.read("ui_scale_override") as float) * 100.0
 
 
 func _on_obtnLanguage_item_selected(index: int) -> void:
@@ -125,7 +132,7 @@ func _on_sbNumPRs_value_changed(value: float) -> void:
 func _on_cbScaleOverrideEnable_toggled(button_pressed: bool) -> void:
     
     Settings.store("ui_scale_override_enabled", button_pressed)
-    $ScaleOverride/sbScaleOverride.editable = button_pressed
+    $SettingsVbox/ScaleOverride/sbScaleOverride.editable = button_pressed
     
     if button_pressed:
         Geom.scale = Settings.read("ui_scale_override")

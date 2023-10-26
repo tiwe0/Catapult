@@ -2,13 +2,18 @@
 
 [ext_resource type="Script" path="res://scripts/FontSizeHelpDialog.gd" id="5"]
 
-[node name="FontSizeHelpDialog" type="Window"]
+[node name="FontSizeHelpDialog" type="AcceptDialog"]
+visible = true
 script = ExtResource("5")
 
 [node name="Panel" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 92.0
+offset_bottom = 51.0
 
 [node name="Margin" type="MarginContainer" parent="Panel"]
 layout_mode = 2
@@ -23,6 +28,7 @@ bbcode_enabled = true
 text = "dlg_font_config_help"
 
 [node name="BtnOK" type="Button" parent="Panel/Margin/VBox"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Close"

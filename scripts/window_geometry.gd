@@ -10,7 +10,8 @@ signal scale_changed
 var scale: float : set = _set_scale
 var min_base_size := Vector2(
         ProjectSettings.get("display/window/size/width"),
-        ProjectSettings.get("display/window/size/height"))
+        ProjectSettings.get("display/window/size/height")
+        )
 var base_size := min_base_size
 
 var decor_offset := Vector2.ZERO

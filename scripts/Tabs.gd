@@ -15,7 +15,7 @@ func _set_disabled(value: bool) -> void:
             # https://github.com/godotengine/godot/issues/52290
             continue
         if not i in _manually_disabled:
-            .set_tab_disabled(i, value)
+            set_tab_disabled(i, value)
     
     disabled = value
 

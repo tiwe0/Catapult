@@ -140,7 +140,6 @@ func _on_Button9_pressed() -> void:
     DisplayServer.screen_get_position(),
     DisplayServer.screen_get_size(),
     DisplayServer.window_get_position(),
-    DisplayServer.window_get_position(),
     DisplayServer.window_get_size(),
     DisplayServer.window_get_size_with_decorations()
     ]
