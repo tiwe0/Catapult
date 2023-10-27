@@ -4,9 +4,16 @@ extends TabContainer
 
 
 var _manually_disabled = []
-
+@onready var main_node = $"/root/Catapult/Main"
+@onready var _tabs = ["tab_game", "tab_mods", "tab_soundpacks", "tab_fonts", "tab_backups", "tab_settings"]
 @export var disabled: bool = false : set = _set_disabled
 
+func _ready():
+    for _tab_index in _tabs.size():
+        set_tab_title(_tab_index, tr(_tabs[_tab_index]))
+
+    if not Settings.read("debug_mode"):
+        remove_child($DebugTab)
 
 func _set_disabled(value: bool) -> void:
     
@@ -19,7 +26,7 @@ func _set_disabled(value: bool) -> void:
     
     disabled = value
 
-
+@warning_ignore("native_method_override")
 func set_tab_disabled(index: int, value: bool) -> void:
     
     if (value == true) and (not index in _manually_disabled):
@@ -28,4 +35,4 @@ func set_tab_disabled(index: int, value: bool) -> void:
         _manually_disabled.erase(index)
     
     if not disabled:
-        .set_tab_disabled(index, value)
+        super.set_tab_disabled(index, value)

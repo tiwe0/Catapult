@@ -1,14 +1,14 @@
-extends VBoxContainer
+extends ScrollContainer
 
 
 @onready var _backups = $"/root/Catapult/Backups"
-@onready var _edit_name = $Current/HBox/EditName
-@onready var _btn_create = $Current/HBox/BtnCreate
-@onready var _list_backups = $Available/HBox/BackupsList
-@onready var _btn_refresh = $Available/Buttons/BtnRefresh
-@onready var _btn_restore = $Available/Buttons/BtnRestore
-@onready var _btn_delete = $Available/Buttons/BtnDelete
-@onready var _lbl_info = $Available/HBox/BackupInfo
+@onready var _edit_name =    $BackupsVBox/Current/HBox/EditName
+@onready var _btn_create =   $BackupsVBox/Current/HBox/BtnCreate
+@onready var _list_backups = $BackupsVBox/Available/HBox/BackupsList
+@onready var _btn_refresh =  $BackupsVBox/Available/Buttons/BtnRefresh
+@onready var _btn_restore =  $BackupsVBox/Available/Buttons/BtnRestore
+@onready var _btn_delete =   $BackupsVBox/Available/Buttons/BtnDelete
+@onready var _lbl_info =     $BackupsVBox/Available/HBox/BackupInfo
 
 
 func _refresh_available() -> void:

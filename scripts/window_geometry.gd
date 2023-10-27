@@ -7,14 +7,13 @@ extends Node
 
 signal scale_changed
 
-var scale: float : set = _set_scale
-var min_base_size := Vector2(
-        ProjectSettings.get("display/window/size/width"),
-        ProjectSettings.get("display/window/size/height")
-        )
-var base_size := min_base_size
+@onready var Main = $/root/Catapult/Main
 
-var decor_offset := Vector2.ZERO
+var scale: float : set = _set_scale
+@onready var min_base_size = Main.size
+@onready var base_size = min_base_size
+
+var decor_offset = Vector2.ZERO
 
 
 func _set_scale(new_scale: float) -> void:
@@ -32,6 +31,8 @@ func _apply_scale() -> void:
 
 func calculate_scale_from_dpi() -> float:
     var ratio = DisplayServer.screen_get_dpi() / 96.0
+    if OS.get_name() == "macOS":
+        ratio = ratio / 2.0
 
     return snapped(ratio, 0.125)
 

@@ -1,21 +1,21 @@
-extends VBoxContainer
+extends ScrollContainer
 
 
 @onready var _root = $"/root/Catapult"
-@onready var _mods = $"../../../Mods"
-@onready var _installed_list = $HBox/Installed/InstalledList
-@onready var _available_list = $HBox/Available/AvailableList
-@onready var _cbox_show_stock = $HBox/Installed/ShowStock
-@onready var _btn_delete = $HBox/Installed/BtnDelete
-@onready var _btn_add = $HBox/Available/VBox/BtnAddSelectedMod
-@onready var _btn_add_all = $HBox/Available/VBox/BtnAddAllMods
-@onready var _btn_get_kenan = $HBox/Available/BtnDownloadKenan
-@onready var _cbox_show_installed = $HBox/Available/ShowInstalled
-@onready var _lbl_mod_info = $ModInfo
-@onready var _lbl_installed = $HBox/Installed/Label
-@onready var _lbl_repo = $HBox/Available/Label
-@onready var _dlg_reinstall = $ModReinstallDialog
-@onready var _dlg_del_multiple = $DeleteMultipleDialog
+@onready var _mods = $"/root/Catapult/Mods"
+@onready var _installed_list =      $ModsVBox/HBox/Installed/InstalledList
+@onready var _available_list =      $ModsVBox/HBox/Available/AvailableList
+@onready var _cbox_show_stock =     $ModsVBox/HBox/Installed/ShowStock
+@onready var _btn_delete =          $ModsVBox/HBox/Installed/BtnDelete
+@onready var _btn_add =             $ModsVBox/HBox/Available/VBox/BtnAddSelectedMod
+@onready var _btn_add_all =         $ModsVBox/HBox/Available/VBox/BtnAddAllMods
+@onready var _btn_get_kenan =       $ModsVBox/HBox/Available/BtnDownloadKenan
+@onready var _cbox_show_installed = $ModsVBox/HBox/Available/ShowInstalled
+@onready var _lbl_mod_info =        $ModsVBox/ModInfo
+@onready var _lbl_installed =       $ModsVBox/HBox/Installed/Label
+@onready var _lbl_repo =            $ModsVBox/HBox/Available/Label
+@onready var _dlg_reinstall =       $ModsVBox/ModReinstallDialog
+@onready var _dlg_del_multiple =    $ModsVBox/DeleteMultipleDialog
 
 var _installed_mods_view := []
 var _available_mods_view := []

@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends ScrollContainer
 
 
 const _PREVIEW_TEXT_EN := [
@@ -50,22 +50,22 @@ const _PREVIEW_TEXT_RU := [
 
 const _PREVIEW_TEXT_NUM := "1234567890 !@#$ %^&* ()[]{}"
 
-@onready var _rng := RandomNumberGenerator.new()
-@onready var _tabs := $".."
-@onready var _fonts := $"/root/Catapult/Fonts"
-@onready var _list := $FontSelection/RightPane/FontsList
-@onready var _btn_set_ui := $FontSelection/RightPane/Buttons/BtnSetFontUI
-@onready var _btn_set_map := $FontSelection/RightPane/Buttons/BtnSetFontMap
-@onready var _btn_set_om := $FontSelection/RightPane/Buttons/BtnSetFontOvermap
-@onready var _btn_set_all := $FontSelection/RightPane/Buttons/BtnSetFontAll
-@onready var _preview := $FontSelection/LeftPane/Preview
-@onready var _cbox_cyrillic = $FontSelection/LeftPane/PreviewCyrillic
-@onready var _info := $FontConfigInfo
-@onready var _sb_font_ui := $FontSelection/LeftPane/FontSizeUI/sbFontSizeUI
-@onready var _sb_font_map := $FontSelection/LeftPane/FontSizeMap/sbFontSizeMap
-@onready var _sb_font_om := $FontSelection/LeftPane/FontSizeOvermap/sbFontSizeOM
-@onready var _cbtn_blending := $FontSelection/LeftPane/FontBlending
-@onready var _help_dlg := $FontSizeHelpDialog
+@onready var _rng = RandomNumberGenerator.new()
+@onready var _tabs = $".."
+@onready var _fonts = $"/root/Catapult/Fonts"
+@onready var _list =          $FontsVBox/FontSelection/RightPane/FontsList
+@onready var _btn_set_ui =    $FontsVBox/FontSelection/RightPane/Buttons/BtnSetFontUI
+@onready var _btn_set_map =   $FontsVBox/FontSelection/RightPane/Buttons/BtnSetFontMap
+@onready var _btn_set_om =    $FontsVBox/FontSelection/RightPane/Buttons/BtnSetFontOvermap
+@onready var _btn_set_all =   $FontsVBox/FontSelection/RightPane/Buttons/BtnSetFontAll
+@onready var _preview =       $FontsVBox/FontSelection/LeftPane/Preview
+@onready var _cbox_cyrillic = $FontsVBox/FontSelection/LeftPane/PreviewCyrillic
+@onready var _info =          $FontsVBox/FontConfigInfo
+@onready var _sb_font_ui =    $FontsVBox/FontSelection/LeftPane/FontSizeUI/sbFontSizeUI
+@onready var _sb_font_map =   $FontsVBox/FontSelection/LeftPane/FontSizeMap/sbFontSizeMap
+@onready var _sb_font_om =    $FontsVBox/FontSelection/LeftPane/FontSizeOvermap/sbFontSizeOM
+@onready var _cbtn_blending = $FontsVBox/FontSelection/LeftPane/FontBlending
+@onready var _help_dlg =      $FontsVBox/FontSizeHelpDialog
 
 
 func _make_preview_string(cyrillic: bool = false) -> String:

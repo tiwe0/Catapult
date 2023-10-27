@@ -13,11 +13,14 @@ var _themes := [
 
 @onready var _root = $"/root/Catapult"
 @onready var _tabs = $"/root/Catapult/Main/Tabs"
-@onready var _debug_ui = $"/root/Catapult/Main/Tabs/Debug"
-
+@onready var _debug_ui = $"/root/Catapult/Main/Tabs/DebugTab"
 
 func _ready() -> void:
-    
+    init_lang()
+    init_theme()
+    init_buttons()
+
+func init_lang() -> void:
     # On the first launch, automatically set UI to system language, if available.
     var sys_locale := TranslationServer.get_locale().substr(0, 2)
     if (Settings.read("launcher_locale") == "") and (sys_locale in TranslationServer.get_loaded_locales()):
@@ -32,13 +35,15 @@ func _ready() -> void:
     if lang_idx >= 0:
         $SettingsVbox/LauncherLanguage/obtnLanguage.selected = lang_idx
 
+func init_theme() -> void:
     for _theme in _themes:
         $SettingsVbox/LauncherTheme/obtnTheme.add_item(_theme)
     
     var theme_idx := _themes.find(Settings.read("launcher_theme"))
     if theme_idx >= 0:
         $SettingsVbox/LauncherTheme/obtnTheme.selected = theme_idx
-    
+
+func init_buttons() -> void:
     $SettingsVbox/ShowGameDesc.button_pressed = Settings.read("show_game_desc")
     $SettingsVbox/KeepLauncherOpen.button_pressed = Settings.read("keep_open_after_starting_game")
     $SettingsVbox/PrintTips.button_pressed = Settings.read("print_tips_of_the_day")
@@ -54,7 +59,6 @@ func _ready() -> void:
     $SettingsVbox/ScaleOverride/cbScaleOverrideEnable.button_pressed = Settings.read("ui_scale_override_enabled")
     $SettingsVbox/ScaleOverride/sbScaleOverride.editable = Settings.read("ui_scale_override_enabled")
     $SettingsVbox/ScaleOverride/sbScaleOverride.value = (Settings.read("ui_scale_override") as float) * 100.0
-
 
 func _on_obtnLanguage_item_selected(index: int) -> void:
     

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ModReinstallDialog.gd" id="1"]
 
 [node name="ModReinstallDialog" type="Window"]
+position = Vector2i(0, 36)
 script = ExtResource("1")
 
 [node name="Panel" type="PanelContainer" parent="."]

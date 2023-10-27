@@ -1,8 +1,8 @@
-extends VBoxContainer
+extends ScrollContainer
 
 
-@onready var _mods = $"../../../Mods"
-@onready var _sound = $"../../../Sound"
+@onready var _mods = $"/root/Catapult/Mods"
+@onready var _sound = $"/root/Catapult/Sound"
 
 
 func _on_Button_pressed() -> void:
